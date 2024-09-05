@@ -72,7 +72,6 @@ namespace. To get a list of the different namespaces, give the variable `namespa
 To bring it to neo4j we create CSVs and import them. This is much faster. 
 
 Note: Creating an index in neo4j first makes everything 10-40x faster!
- 
 
 1. `python3 wiki2graph/import_neo4j.py create-csv data/wiki_json data/csv` 
    Takes the extracted JSON files. For every bucket, it creates the CSV files for the graph database. 
@@ -90,3 +89,6 @@ Note: Creating an index in neo4j first makes everything 10-40x faster!
    (3min for the articles, <1min for authors, 2:30 Minutes for the links between authors and articles, around 45min for the links betweenthe articles)
    You can check the progress on the neo4j web-ui.
    In the end, you should have (for the german wiki 3.7mio articles and XXmio relationhsips)
+
+Note: Why CSV? You could add them directly from JSON, but it seemed much slower. Also with CSV, I have a good checkpoint on error. 
+
