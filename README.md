@@ -1,5 +1,5 @@
-wiki2graph
-==========
+wiki2graph: Wikipedia 2 Neo4J
+=============================
 
 This tool builds a graph in neo4j from a wiki-dump.
 
