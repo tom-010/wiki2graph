@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  neo4j:
+    image: neo4j:5.22.0-community-bullseye
+    environment:
+      - NEO4J_AUTH=neo4j/password # Default username and password
+      - NEO4J_dbms_security_auth__minimum__password__length=1
+    ports:
+      - "7474:7474"  # Port for Neo4j Browser
+      - "7687:7687"  # Port for Bolt protocol (used by drivers)
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+      - neo4j_import:/import
+      - neo4j_plugins:/plugins
+      - ./data/csv:/import/data/csv
+
+volumes:
+  neo4j_data:
+  neo4j_logs:
+  neo4j_import:
+  neo4j_plugins:
+

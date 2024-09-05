@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "wiki2graph"
+version = "0.1.0"
+description = ""
+authors = ["Tom Stadelmann <tom-010@web.de>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+click = "^8.1.7"
+pandas = "^2.2.2"
+neo4j = "^5.24.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
