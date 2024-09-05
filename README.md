@@ -3,12 +3,18 @@ wiki2graph
 
 This tool builds a graph in neo4j from a wiki-dump.
 
+
 ## Overview
 
 The idea is to download the dump, parse it to get an easier to work with json,
 convert it do different CSV files and import them into neo4j.
 
 It builds a graph, with `:ARTICLE` and `:AUTHOR` and the relationsships `LINKS_TO` and `:AUTHORED`
+
+## Is it alive?
+
+This is a 1-time script for myself. 
+Feel free to use it and contribute changes.
 
 ## What these scripts do?
 
