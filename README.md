@@ -26,6 +26,8 @@ Feel free to use it and contribute changes.
 
 These are the steps.
 
+![Step](./docs/diagram.svg)
+
 ## Download a dump
 
 I tested everything with the german wikidump (`dewiki`)
