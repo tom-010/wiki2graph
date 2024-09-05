@@ -88,7 +88,7 @@ Note: Creating an index in neo4j first makes everything 10-40x faster!
    This takes around 56:00
    (3min for the articles, <1min for authors, 2:30 Minutes for the links between authors and articles, around 45min for the links betweenthe articles)
    You can check the progress on the neo4j web-ui.
-   In the end, you should have (for the german wiki 3.7mio articles and XXmio relationhsips)
+   In the end, you should have (for the german wiki 3.7mio articles and 85.7mio relationhsips)
 
 Note: Why CSV? You could add them directly from JSON, but it seemed much slower. Also with CSV, I have a good checkpoint on error. 
 
