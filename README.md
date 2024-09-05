@@ -16,6 +16,14 @@ It builds a graph, with `:ARTICLE` and `:AUTHOR` and the relationsships `LINKS_T
 This is a 1-time script for myself. 
 Feel free to use it and contribute changes.
 
+Limitations:
+- I am not 100% sure, that every article makes it through the pipeline, as I just skip errors. I only need some graph with content, so a few lost articles did not matter to me. 
+- In step 1, there may be more metadata you want.
+- You may want to add other/more properties to the graph. To do this, change the CSV-creation script and the cyper queries in `import_neo4j.py`
+- ... (I did not think too hard about the limitations)
+
+That said, the scripts should work fine for you if you just need a graph with most of Wikipedia in Neo4J.
+
 ## What these scripts do?
 
 - Take a wiki-dump file (which you can download)
@@ -79,6 +87,6 @@ Note: Creating an index in neo4j first makes everything 10-40x faster!
 4. `python3 wiki2graph/import_neo4j.py import-csv data/csv`
    This performs multiple steps, which you can check in `wiki2graph/import_neo4j.py` `import_csv` (check the `click.echo`)
    This takes around 56:00
-   (3 minutes for the articles, <1min for authors, 2:30 Minutes for the links between authors and articles, 35 min for the links betweenthe articles)
+   (3min for the articles, <1min for authors, 2:30 Minutes for the links between authors and articles, around 45min for the links betweenthe articles)
    You can check the progress on the neo4j web-ui.
-   In the end, you should have (for the german wiki x articles and x relationhsips)
+   In the end, you should have (for the german wiki 3.7mio articles and XXmio relationhsips)
