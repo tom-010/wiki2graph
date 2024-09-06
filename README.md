@@ -11,6 +11,10 @@ convert it do different CSV files and import them into neo4j.
 
 It builds a graph, with `:ARTICLE` and `:AUTHOR` and the relationsships `LINKS_TO` and `:AUTHORED`
 
+Features:
+
+- TODO
+
 ## Is it alive?
 
 This is a 1-time script for myself. 
