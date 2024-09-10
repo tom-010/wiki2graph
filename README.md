@@ -96,3 +96,30 @@ Note: Creating an index in neo4j first makes everything 10-40x faster!
 
 Note: Why CSV? You could add them directly from JSON, but it seemed much slower. Also with CSV, I have a good checkpoint on error. 
 
+## Known issues
+
+- In the json, the links to the specific sections are removed (somewhere?), thus there are not links from sections to other sections in the graph (and in `section_to_section_links.csv`).
+- For links between two articles, I could store how many links there are. Often multiple sections link to the same article, thus the connection is stroner. I need to add this as property to the relationship.
+
+## Recipes
+
+
+### Reset Database
+
+Delete docker-volume database
+
+```
+docker-compose down -v 
+docker-compose up -d
+```
+
+Refresh `http://localhost:7474/` until available, then start the script.
+
+
+### Reset/Cleanup intermediate files
+
+If you store them in the directory `data/` (see your docker-compose, what you mount)
+
+```
+rm data/ -r
+```
