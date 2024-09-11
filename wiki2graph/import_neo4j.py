@@ -313,7 +313,7 @@ def import_csv(csv_dir: str, uri: str, username: str, password: str) -> None:
     importer.add(path.rglob('**/section_links.csv'), t)
 
 
-    importer.step("Importing the links from sections to articles...", '50:00')
+    importer.step("Importing the links from sections to articles...", '65:17')
     t = """
     LOAD CSV WITH HEADERS FROM 'file:///{csv_file_path}' AS row
     MATCH (s:Section {{id: row.from}})
@@ -324,7 +324,7 @@ def import_csv(csv_dir: str, uri: str, username: str, password: str) -> None:
 
 
 
-    importer.step("Importing article links...", '50:00')
+    importer.step("Importing article links...", '353:02')
     t = """
     LOAD CSV WITH HEADERS FROM 'file:///{csv_file_path}' AS row
     MATCH (a:Article {{title: row.from}})
