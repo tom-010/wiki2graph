@@ -100,6 +100,9 @@ Note: Why CSV? You could add them directly from JSON, but it seemed much slower.
 
 - In the json, the links to the specific sections are removed (somewhere?), thus there are not links from sections to other sections in the graph (and in `section_to_section_links.csv`).
 - For links between two articles, I could store how many links there are. Often multiple sections link to the same article, thus the connection is stroner. I need to add this as property to the relationship.
+- Depends on german. For example, the workd `kategorie` is searched for, not `category`. This has to be configurable to support other languages.
+- The first section is called `Introduction`. This is english, thus not consitent. Also, It should be the name of the article.
+- There are common sections at the bottom, which you may want to filter out, like weblinks, etc. To be able to filter them out, they need a property in the graph which classifiy them.
 
 ## Recipes
 
