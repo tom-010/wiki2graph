@@ -9,11 +9,24 @@ This tool builds a graph in neo4j from a wiki-dump.
 The idea is to download the dump, parse it to get an easier to work with json,
 convert it do different CSV files and import them into neo4j.
 
-It builds a graph, with `:ARTICLE` and `:AUTHOR` and the relationsships `LINKS_TO` and `:AUTHORED`
+Builds a graph with nodes `Article`, `Author`, `Category`, `Section` and relationships `AUTHORED`, `IS_IN_CATEGORY`, `LINKS_TO`, `PART_OF` 
 
-Features:
 
-- TODO
+### Features:
+
+- Extracts wikimedia-markup-articles from a dewiki-dump. 
+   - The first line of the extracted articles is JSON with some metadata about the article
+- Parses the wikimedia-markup-files, converts them additionally to HTML, adds metadata (like outgoing links) and makes it easy to use via JSON-files. One file per article.
+- Converts these JSON files to CSV-files, which can be importet to Neo4J
+- Handles the import to Neo4J from CSV
+- Creates nodes of types: Article, Author, Category, Section
+- Creates relationships of types: AUTHORED, IS_IN_CATEGORY, LINKS_TO, PART_OF 
+
+
+There are 23 Million Nodes and 224 Million Relationships (see below for details). 
+
+![Screenshot of the Grah](docs/graph_screenshot.png)
+
 
 ## Is it alive?
 
@@ -103,6 +116,30 @@ Note: Why CSV? You could add them directly from JSON, but it seemed much slower.
 - Depends on german. For example, the workd `kategorie` is searched for, not `category`. This has to be configurable to support other languages.
 - The first section is called `Introduction`. This is english, thus not consitent. Also, It should be the name of the article.
 - There are common sections at the bottom, which you may want to filter out, like weblinks, etc. To be able to filter them out, they need a property in the graph which classifiy them.
+
+
+## Final Graph / Numbers
+
+- 23 Million Nodes
+   -  3.246.703 Articles (Meta-Articles like Files, etc). dewiki has around 2.8m "real" articles
+   -    124.552 Authors (Only the author last edited an article is stored!)
+   -    412.446 Categories
+   - 19.259.613 Sections (An article consits of many sections)
+- 224 Million Relationships
+   -   3.246.703 :AUTHORED
+   -  11.035.693 :IS_IN_CATEGORY Article is in Category
+   - 190.769.782 :LINKS_TO Either Article links to Article, Article links to Section, Section links to Article, Section links to Section
+   -  19.259.613 :PART_OF Section is part of Article
+- I have importet this on a machine with:
+   - 15.3 GB available RAM
+   - CPU (`lscpu`):
+      - 13th Gen Intel(R) Core(TM) i5-13500H 
+      - Threads per core 2, Cores per socket 12, sockets 1
+      - CPU family 6, model 186 (whatever this means)
+      - MaxMHz: 4700,000
+   - Import takes around 9-10 hours (7 hours CSV import, 2h preprocessing (estimated from memory))
+- Neo4j takes 1.1GB of RAM while running this graph
+- Neo4j Docker Volume Size on Disk: 18GB
 
 ## Recipes
 
