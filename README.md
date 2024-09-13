@@ -163,3 +163,9 @@ If you store them in the directory `data/` (see your docker-compose, what you mo
 ```
 rm data/ -r
 ```
+
+### Get size in GB of Neo4j using Docker
+
+```
+docker system df -v | grep neo4j_data
+```
